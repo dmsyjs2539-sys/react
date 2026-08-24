@@ -1,0 +1,37 @@
+@import url('https://www.bokbootlab.com/font-css/gmarket-sans.css');
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.btn {
+  width: 100px;
+  height: 50px;
+  border: none;
+  background-color: pink;
+  color: red;
+  border-radius: 10px;
+  margin: 0 10px;
+  font-size: 14px;
+}
+
+.is-active {
+  background: lightcoral;
+}
+
+.img300 {
+  height: 300px;
+}
+
+.img2 {
+  width: 300px;
+  height: 300px;
+  background: url('./assets/images/01.jpg') center/cover;
+}
+
+p {
+  /* GmarketSans */
+  font-family: 'GmarketSans', sans-serif;
+  font-size: 20px;
+}

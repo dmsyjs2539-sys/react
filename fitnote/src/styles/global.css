@@ -1,0 +1,89 @@
+/* :root는 모든 화면이 함께 쓰는 색과 글꼴을 모아 두는 공용 준비물 상자입니다. */
+:root {
+  color: #1c1b1b;
+  background: #fff0e5;
+  font-family: "Wanted Sans Variable", "Wanted Sans", "Pretendard Variable", system-ui, sans-serif;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  --color_black: #1c1b1b;
+  --color_brown: #5a4139;
+  --color_primary_0: #ffffff;
+  --color_primary_100: #fff0e5;
+  --color_primary_200: #ffdbd0;
+  --color_primary_500: #f75f28;
+  --color_login_500: #f15a24;
+  --color_primary_600: #d4460e;
+  --color_primary_700: #ad3300;
+  --color_secondary_500: #282828;
+  --color_field_hint: #ba948f;
+  --font_display: "Libre Caslon Text", Georgia, serif;
+  --font_body: "Wanted Sans Variable", "Wanted Sans", "Pretendard Variable", system-ui, sans-serif;
+  --font_action: "Hanken Grotesk", system-ui, sans-serif;
+  --font_input: "Pretendard Variable", "Pretendard", system-ui, sans-serif;
+  --font_status: "SF Pro", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --focus_outline: 3px solid #ad3300;
+}
+
+/* 크기를 계산할 때 테두리와 안쪽 여백까지 width와 height 안에 포함합니다. */
+* {
+  box-sizing: border-box;
+}
+
+/* React가 화면 전체 높이를 사용할 수 있도록 바깥 상자 세 개를 꽉 채웁니다. */
+html,
+body,
+#root {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+/* 브라우저가 기본으로 넣는 바깥 여백을 지우고 앱 뒤쪽 배경색을 정합니다. */
+body {
+  min-width: 320px;
+  margin: 0;
+  background: #f6f3f2;
+}
+
+/* 버튼과 입력칸도 부모가 정한 글꼴을 그대로 사용합니다. */
+button,
+input {
+  font: inherit;
+}
+
+/* 키보드로 이동할 때 지금 선택한 곳을 선명한 테두리로 알려 줍니다. */
+button:focus-visible,
+input:focus-visible {
+  outline: var(--focus_outline);
+  outline-offset: 3px;
+}
+
+/* 실제 iframe 없이 휴대폰처럼 보이는 최대 430px 앱 상자를 만듭니다. */
+.app_shell {
+  position: relative;
+  width: min(100%, 430px);
+  height: 100dvh;
+  margin: 0 auto;
+  overflow: hidden;
+  background: var(--color_primary_100);
+}
+
+/* 넓은 모니터에서는 가운데 놓인 앱 상자에만 그림자를 보여 줍니다. */
+@media (min-width: 431px) {
+  .app_shell {
+    box-shadow: 0 24px 64px rgba(28, 27, 27, 0.16);
+  }
+}
+
+/* 움직임에 민감한 사용자는 애니메이션을 거의 보지 않도록 줄입니다. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms;
+    animation-iteration-count: 1;
+    scroll-behavior: auto;
+    transition-duration: 0.01ms;
+  }
+}

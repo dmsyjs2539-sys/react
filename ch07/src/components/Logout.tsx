@@ -1,0 +1,5 @@
+export default function Logout(){
+  return(
+    <h1>로그아웃 되었습니다</h1>
+  )
+}
