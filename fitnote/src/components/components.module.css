@@ -202,7 +202,12 @@
   filter: invert(1);
 }
 
-/* 진한 갈색 점은 어두운 배경에 묻히므로 밝게 끌어올립니다. */
+/* 지나온 점은 흐리게 두고, 지금 보고 있는 점만 밝게 띄워 순서를 알려 줍니다. */
 [data-screen="onboarding_02"] .pagination_bullet img {
-  filter: brightness(2.1) saturate(0.55);
+  opacity: 0.4;
+}
+
+[data-screen="onboarding_02"] .pagination_bullet[aria-current="step"] img {
+  opacity: 1;
+  filter: brightness(2.3) saturate(0.5);
 }
