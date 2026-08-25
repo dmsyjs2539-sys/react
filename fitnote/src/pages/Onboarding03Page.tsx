@@ -9,9 +9,9 @@ import { SkipButton } from "../components/SkipButton"
 import { TopWrap } from "../components/TopWrap"
 import { OnboardingActions } from "../components/OnboardingActions.tsx";
 import { Box } from "../components/Box.tsx";
-import organizeImage from "../assets/onboarding/onboarding_02_background.png";
-import readImage from "../assets/onboarding/onboarding_01_background.png";
-import rememberImage from "../assets/onboarding/onboarding_04_background.png"
+import organizeImage from "../assets/onboarding/onboarding_03_organize_card_image.png";
+import readImage from "../assets/onboarding/onboarding_03_read_card_image.png";
+import rememberImage from "../assets/onboarding/onboarding_03_remember_card_image.png"
 
 export function Onboarding03Page({ onNext, onSkip }: OnboardingPageProps) {
   return (
@@ -25,9 +25,9 @@ export function Onboarding03Page({ onNext, onSkip }: OnboardingPageProps) {
         <h1>맡고<br/><span>기록</span>하고<br/>기억한다.</h1>
         </div>
         <div className={styles.feature_box_list} aria-label="ScentNote 기록 흐름">
-          <Box title="Discover" description={"새로운 향을\n깊이 있게 맡고"} imageSrc={readImage} imageAlt="TOM FORD LOST CHERRY 향수병 사진" variant="read" />
-          <Box title="Record" description={"나만의 언어로\n향을 기록하고"} imageSrc={organizeImage} imageAlt="SWEET CHERRY 향수병 사진" variant="organize" />
-          <Box title="Remember" description={"내 취향에 맞춰\n오래 기억하게 합니다"} imageSrc={rememberImage} imageAlt="midnight cherry 향수병 사진" variant="remember" />
+          <Box title="Discover" description={"새로운 향을\n깊이 있게 맡고"} imageSrc={readImage} imageAlt="체리 칵테일 잔에 담긴 붉은 유리병 사진" variant="read" />
+          <Box title="Record" description={"나만의 언어로\n향을 기록하고"} imageSrc={organizeImage} imageAlt="체리를 담은 접시 위에 놓인 붉은 유리병 사진" variant="organize" />
+          <Box title="Remember" description={"내 취향에 맞춰\n오래 기억하게 합니다"} imageSrc={rememberImage} imageAlt="풀밭에 놓인 TOM FORD LOST CHERRY 향수병 사진" variant="remember" />
         </div>
         {/* 현재 첫 번째 안내 화면이며, 누르면 onNext가 실행됩니다. */}
         <OnboardingActions currentPage={2} variant="split" onNext={onNext} />
