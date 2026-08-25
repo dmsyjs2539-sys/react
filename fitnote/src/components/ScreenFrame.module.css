@@ -51,7 +51,7 @@
   width: 489px;
   height: 489px;
   border-radius: 999px;
-  background: rgba(255, 181, 158, 0.2);
+  background: rgba(176, 137, 104, 0.25);
   filter: blur(50px);
   pointer-events: none;
 }
@@ -78,10 +78,26 @@
 .screen_frame[data-screen="login"] .ambient_glow {
   top: -214px;
   left: 144px;
-  background: rgba(255, 210, 147, 0.2);
+  background: rgba(190, 158, 116, 0.25);
 }
 
 /* 스플래시 영상에는 이미 빛이 들어 있으므로 추가 장식을 숨깁니다. */
 .screen_frame[data-screen="splash"] .ambient_glow {
   display: none;
+}
+
+/* 온보딩 02는 사진 대신 붉은 갈색 벽돌빛 그라디언트를 배경으로 씁니다. */
+.screen_frame[data-screen="onboarding_02"] {
+  color: var(--color_brick_on);
+  background: linear-gradient(
+    165deg,
+    var(--color_brick_400) 0%,
+    var(--color_brick_500) 45%,
+    var(--color_brick_700) 100%
+  );
+}
+
+/* 어두운 벽돌 배경 위에서는 은은한 빛도 밝은 쪽으로 바꿔 줍니다. */
+.screen_frame[data-screen="onboarding_02"] .ambient_glow {
+  background: rgba(255, 214, 190, 0.18);
 }

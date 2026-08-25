@@ -26,7 +26,7 @@ function App() {
       {currentPage === 'onboarding_03' ? (
         <Onboarding03Page onNext={() => setCurrentPage('onboarding_04')} onSkip={handleSkip} />) : null}
       {currentPage === 'onboarding_04' ? (
-        <Onboarding04Page onNext={() => setCurrentPage('login')} onSkip={handleSkip} />) : null}
+        <Onboarding04Page onNext={() => setCurrentPage('login')} />) : null}
        {currentPage === 'login' ? <LoginPage /> : null} 
     </main>
   )

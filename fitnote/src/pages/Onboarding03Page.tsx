@@ -1,7 +1,6 @@
 import type { OnboardingPageProps } from "./page_types.ts"
 import styles from "./OnboardingPages.module.css";
 
-import background from "../assets/onboarding/onboarding_02_background.png"
 import homeIndicator from "../assets/shared/ios_home_indicator.svg"
 import statusLevels from "../assets/shared/ios_status_levels.svg"
 import { BottomWrap } from "../components/BottomWrap"

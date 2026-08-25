@@ -44,7 +44,7 @@
 /* 카드의 물건 그림에 부드러운 그림자를 더합니다. */
 .feature_box_image {
   position: absolute;
-  filter: drop-shadow(1px 28px 30.6px rgba(173, 51, 0, 0.14));
+  filter: drop-shadow(1px 28px 30.6px rgba(86, 54, 27, 0.14));
 }
 
 /* 그림이 정해진 상자 밖으로 찌그러지지 않도록 비율을 지킵니다. */

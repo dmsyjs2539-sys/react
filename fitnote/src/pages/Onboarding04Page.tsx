@@ -1,4 +1,3 @@
-import type { OnboardingPageProps } from "./page_types.ts";
 import styles from "./OnboardingPages.module.css";
 import background from "../assets/onboarding/onboarding_04_background.png"
 

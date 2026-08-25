@@ -107,3 +107,16 @@
     width: calc(100% - 56px);
   }
 }
+
+/* 벽돌빛 배경을 쓰는 온보딩 02에서는 글자를 밝은 쪽으로 뒤집어 읽히게 합니다. */
+[data-screen="onboarding_02"] .headline_block h1 {
+  color: var(--color_brick_on);
+}
+
+[data-screen="onboarding_02"] .headline_block h1 span {
+  color: var(--color_brick_accent);
+}
+
+[data-screen="onboarding_02"] .headline_block p {
+  color: var(--color_brick_on_muted);
+}
