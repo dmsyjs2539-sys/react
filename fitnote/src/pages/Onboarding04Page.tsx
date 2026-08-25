@@ -18,8 +18,8 @@ export function Onboarding04Page({ onNext } :Onboarding04PageProps){
       <TopWrap levelsSrc={statusLevels} />
       <div className={styles.main_area}>
         <div className={styles.final_copy}>
-          <h1>Every Note<br />becomes<br /><span>your own AI</span></h1>
-          <p>당신의 노트가 쌓일수록<br />더 정확히, 더 깊이,<br />더 나답게 AI가 완성됩니다.</p>
+          <h1>Every Note<br />becomes<br /><span>your own scent</span></h1>
+          <p>당신의 기록이 쌓일수록<br />더 정확히, 더 깊이,<br />더 나다운 향이 완성됩니다.</p>
         </div>
           {/* 현재 첫 번째 안내 화면이며, 누르면 onNext가 실행됩니다. */}
         <OnboardingActions currentPage={3} variant="stacked" onNext={onNext} />

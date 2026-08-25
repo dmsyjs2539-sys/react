@@ -36,7 +36,7 @@ export function Onboarding01Page({ onNext, onSkip }: OnboardingPageProps) {
           aria-label="다음 온보딩으로 이동"
         >
           <BrandLogo variant="onboarding" />
-          <span className={styles.intro_description}>내 핏에 맞춰<br />AI를 학습하는 노트</span>
+          <span className={styles.intro_description}>내 취향에 맞춰<br />향을 기억하는 노트</span>
         </button>
       </div>
       <BottomWrap  indicatorSrc={homeIndicator}/>

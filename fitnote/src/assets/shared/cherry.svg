@@ -1,0 +1,12 @@
+<svg width="48" height="64" viewBox="0 0 48 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M22 33C22 33 21 20 27 10C31 3 40 2 40 2" stroke="#5A4139" stroke-width="2.6" stroke-linecap="round"/>
+  <circle cx="21" cy="46" r="16" fill="url(#cherry_body)"/>
+  <ellipse cx="14.5" cy="39.5" rx="5.2" ry="3.4" transform="rotate(-28 14.5 39.5)" fill="#FFFFFF" fill-opacity="0.42"/>
+  <defs>
+    <radialGradient id="cherry_body" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(13 37) rotate(50) scale(30)">
+      <stop stop-color="#D33040"/>
+      <stop offset="0.55" stop-color="#9C1424"/>
+      <stop offset="1" stop-color="#5E0912"/>
+    </radialGradient>
+  </defs>
+</svg>

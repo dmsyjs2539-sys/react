@@ -1,0 +1,115 @@
+/* 스플래시 배경 사진은 온보딩 01과 같은 사진을 조금 확대해 천천히 밀어 줍니다. */
+.splash_photo {
+  position: absolute;
+  z-index: -2;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  animation: photo_settle 3.6s ease-out forwards;
+  object-fit: cover;
+}
+
+@keyframes photo_settle {
+  0% {
+    transform: scale(1.12);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* 사진 위에 옅은 크림색 막을 깔아 로고와 문장이 읽히게 합니다. */
+.splash_scrim {
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(246, 236, 228, 0.92) 0%,
+    rgba(246, 236, 228, 0.84) 34%,
+    rgba(246, 236, 228, 0.4) 62%,
+    rgba(246, 236, 228, 0.2) 100%
+  );
+  pointer-events: none;
+}
+
+/* 떨어지는 체리들이 담기는 층입니다. 글자를 가리지 않게 클릭도 통과시킵니다. */
+.cherry_layer {
+  position: absolute;
+  z-index: 1;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+/* 체리 한 알. 낙하 거리와 회전, 시작 시각은 각 체리마다 다르게 넣어 줍니다. */
+.cherry {
+  position: absolute;
+  top: 0;
+  width: var(--size);
+  animation: cherry_drop var(--fall) cubic-bezier(0.45, 0.1, 0.6, 1) var(--delay) both;
+  filter: drop-shadow(0 6px 10px rgba(78, 33, 24, 0.45));
+  will-change: transform;
+}
+
+@keyframes cherry_drop {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, -22dvh, 0) rotate(var(--spin_from));
+  }
+  12% {
+    opacity: 1;
+  }
+  /* 바닥에 닿는 순간입니다. */
+  68% {
+    transform: translate3d(var(--drift), var(--land), 0) rotate(var(--spin_to));
+  }
+  /* 살짝 튀어 올랐다가 */
+  80% {
+    transform: translate3d(var(--drift), calc(var(--land) - 26px), 0)
+      rotate(calc(var(--spin_to) + 6deg));
+  }
+  /* 다시 내려앉습니다. */
+  92% {
+    transform: translate3d(var(--drift), var(--land), 0) rotate(var(--spin_to));
+  }
+  100% {
+    opacity: 1;
+    transform: translate3d(var(--drift), var(--land), 0) rotate(var(--spin_to));
+  }
+}
+
+/* 로고는 체리가 어느 정도 떨어진 뒤에 천천히 떠오릅니다. */
+.splash_brand {
+  position: absolute;
+  top: 236px;
+  left: 50%;
+  z-index: 2;
+  display: grid;
+  justify-items: center;
+  gap: 18px;
+  width: 280px;
+  animation: brand_rise 1.1s ease-out 1.15s both;
+  text-align: center;
+  transform: translateX(-50%);
+}
+
+@keyframes brand_rise {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, 18px);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+}
+
+.splash_tagline {
+  color: var(--color_brown);
+  font-family: var(--font_body);
+  font-size: 17px;
+  font-weight: 400;
+  letter-spacing: 0.2px;
+  line-height: 1.4;
+}

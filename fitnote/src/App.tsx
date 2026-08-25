@@ -16,7 +16,7 @@ function App() {
     setCurrentPage('login');
   }
   return (
-    <main className='app_shell' aria-label='fitnote workspace'>
+    <main className='app_shell' aria-label='ScentNote workspace'>
       {currentPage === 'splash' ? (
         <SplashPage onNext={() => setCurrentPage('onboarding_01')} />) : null}
       {currentPage === 'onboarding_01' ? (

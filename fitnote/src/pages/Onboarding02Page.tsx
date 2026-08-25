@@ -20,8 +20,8 @@ export function Onboarding02Page({ onNext, onSkip }: OnboardingPageProps) {
         <SkipButton onSkip={onSkip} />
         {/* 이 화면에서만 쓰는 문장은 굳이 새 컴포넌트로 쪼개지 않고 페이지에 둡니다. */}
         <div className={styles.headline_block}>
-          <h1>AI는 같아도,<br /><span>내 핏</span>은<br />다르니까.</h1>
-          <p>내가 만드는<br />맞춤형 AI 지식</p>
+          <h1>향은 같아도,<br /><span>내 살결</span>은<br />다르니까.</h1>
+          <p>나에게만 남는<br />단 하나의 잔향</p>
         </div>
         {/* 현재 첫 번째 안내 화면이며, 누르면 onNext가 실행됩니다. */}
         <OnboardingActions currentPage={1} variant="split" onNext={onNext} />
