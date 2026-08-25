@@ -9,6 +9,8 @@ interface ScreenFrameProps {
   readonly backgroundSrc?: string | undefined
   readonly videoSrc?: string | undefined
   readonly videoTestId?: string | undefined
+  // 영상을 내려받는 동안 대신 보여 줄 사진입니다.
+  readonly videoPosterSrc?: string | undefined
   readonly onVideoEnded?: (() => void) | undefined
   readonly onVideoError?: (() => void) | undefined
   readonly glowVariant: "onboarding_01" | "onboarding_02" | "onboarding_03" | "onboarding_04" | "login" | "splash"
@@ -19,6 +21,7 @@ export function ScreenFrame({
   backgroundSrc,
   videoSrc,
   videoTestId,
+  videoPosterSrc,
   onVideoEnded,
   onVideoError,
   glowVariant
@@ -29,6 +32,7 @@ export function ScreenFrame({
         <video
           className={styles.background_video}
           data-testid={videoTestId}
+          poster={videoPosterSrc}
           src={videoSrc}
           autoPlay
           muted

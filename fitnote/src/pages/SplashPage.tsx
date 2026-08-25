@@ -47,6 +47,7 @@ export function SplashPage({ onNext }: SplashPageProps) {
       glowVariant="splash"
       videoSrc={videoFailed ? undefined : SPLASH_VIDEO_SRC}
       videoTestId="splash-video"
+      videoPosterSrc={splashPhoto}
       onVideoEnded={onNext}
       onVideoError={() => {
         setVideoFailed(true)
