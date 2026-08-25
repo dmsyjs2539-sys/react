@@ -41,45 +41,43 @@
   line-height: 1.2;
 }
 
-/* 카드의 물건 그림에 부드러운 그림자를 더합니다. */
+/* 카드 오른쪽의 향수 사진 창입니다. 세 카드가 같은 크기의 둥근 창을 씁니다. */
 .feature_box_image {
   position: absolute;
-  filter: drop-shadow(1px 28px 30.6px rgba(86, 54, 27, 0.14));
-}
-
-/* 그림이 정해진 상자 밖으로 찌그러지지 않도록 비율을 지킵니다. */
-.feature_box_image img {
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-}
-
-/* 세 그림은 생김새가 달라 각각 알맞은 자리와 크기를 사용합니다. */
-.feature_box[data-variant="read"] .feature_box_image {
-  top: 9px;
-  left: 169px;
-  width: 150px;
-  height: 100px;
+  top: 12px;
+  right: 14px;
   overflow: hidden;
+  width: 128px;
+  height: 96px;
+  border-radius: 10px;
+  box-shadow: 0 8px 16px rgba(86, 54, 27, 0.16);
+}
+
+/* 사진은 창보다 크게 늘린 뒤 밀어서, 향수병만 창에 담기도록 잘라 냅니다.
+   사진마다 병의 위치와 크기가 달라 카드별로 값을 따로 잡습니다. */
+.feature_box_image img {
+  position: absolute;
+  display: block;
+  object-fit: cover;
 }
 
 .feature_box[data-variant="read"] .feature_box_image img {
-  position: absolute;
-  top: -25%;
-  height: 150%;
+  top: -186px;
+  left: -117px;
+  width: 250px;
+  height: 375px;
 }
 
-.feature_box[data-variant="organize"] .feature_box_image {
-  top: 13px;
-  left: 206px;
-  width: 90px;
-  height: 90px;
+.feature_box[data-variant="organize"] .feature_box_image img {
+  top: -100px;
+  left: -43px;
+  width: 213px;
+  height: 267px;
 }
 
-.feature_box[data-variant="remember"] .feature_box_image {
-  right: 27px;
-  bottom: 19px;
-  width: 82px;
-  height: 83px;
+.feature_box[data-variant="remember"] .feature_box_image img {
+  top: -102px;
+  left: -68px;
+  width: 276px;
+  height: 345px;
 }

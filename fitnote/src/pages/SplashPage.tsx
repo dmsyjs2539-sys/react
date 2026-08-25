@@ -2,7 +2,6 @@ import { useEffect } from "react"
 import type { CSSProperties } from "react"
 
 import splashPhoto from "../assets/onboarding/onboarding_01_background.png"
-import cherry from "../assets/shared/cherry.svg"
 import homeIndicator from "../assets/shared/ios_home_indicator.svg"
 import statusLevels from "../assets/shared/ios_status_levels.svg"
 import { BottomWrap } from "../components/BottomWrap"
@@ -16,12 +15,20 @@ import styles from "./SplashPage.module.css"
 // 체리가 다 떨어지고 로고를 읽을 시간까지 더한 길이입니다.
 const SPLASH_DURATION_MS = 4200
 
-/* 체리 한 알이 어디서 떨어져 어디에 앉을지 미리 정해 둡니다.
-   무작위로 만들면 열 때마다 화면이 달라져 어색하므로 값을 고정합니다. */
-interface FallingCherry {
+// 배경 사진의 원본 크기입니다. 체리를 오려낼 위치를 이 좌표계로 적습니다.
+const PHOTO_WIDTH = 736
+const PHOTO_HEIGHT = 1104
+
+/* 떨어지는 체리는 그림이 아니라 배경 사진에서 실제로 오려낸 조각입니다.
+   x, y, r은 사진 속 체리 한 알의 중심과 반지름(원본 픽셀)이고,
+   size는 화면에 보여 줄 지름입니다. 나머지는 낙하 연출 값입니다. */
+interface CherryCrop {
   readonly id: number
+  readonly x: number
+  readonly y: number
+  readonly r: number
+  readonly size: number
   readonly left: string
-  readonly size: string
   readonly land: string
   readonly drift: string
   readonly spinFrom: string
@@ -30,14 +37,35 @@ interface FallingCherry {
   readonly fall: string
 }
 
-const FALLING_CHERRIES: readonly FallingCherry[] = [
-  { id: 1, left: "14%", size: "38px", land: "64dvh", drift: "10px", spinFrom: "-24deg", spinTo: "14deg", delay: "0s", fall: "1.5s" },
-  { id: 2, left: "68%", size: "46px", land: "70dvh", drift: "-16px", spinFrom: "18deg", spinTo: "-12deg", delay: "0.22s", fall: "1.7s" },
-  { id: 3, left: "40%", size: "30px", land: "58dvh", drift: "14px", spinFrom: "-8deg", spinTo: "22deg", delay: "0.48s", fall: "1.4s" },
-  { id: 4, left: "84%", size: "34px", land: "76dvh", drift: "-10px", spinFrom: "26deg", spinTo: "-6deg", delay: "0.700s", fall: "1.6s" },
-  { id: 5, left: "27%", size: "42px", land: "80dvh", drift: "-8px", spinFrom: "-16deg", spinTo: "8deg", delay: "0.94s", fall: "1.55s" },
-  { id: 6, left: "56%", size: "26px", land: "86dvh", drift: "12px", spinFrom: "10deg", spinTo: "-18deg", delay: "1.18s", fall: "1.45s" },
+const CHERRY_CROPS: readonly CherryCrop[] = [
+  { id: 1, x: 329, y: 588, r: 49, size: 44, left: "13%", land: "63dvh", drift: "10px", spinFrom: "-24deg", spinTo: "14deg", delay: "0s", fall: "1.5s" },
+  { id: 2, x: 390, y: 999, r: 50, size: 47, left: "66%", land: "70dvh", drift: "-16px", spinFrom: "18deg", spinTo: "-12deg", delay: "0.22s", fall: "1.7s" },
+  { id: 3, x: 401, y: 310, r: 40, size: 33, left: "39%", land: "57dvh", drift: "14px", spinFrom: "-8deg", spinTo: "22deg", delay: "0.46s", fall: "1.4s" },
+  { id: 4, x: 604, y: 442, r: 39, size: 38, left: "82%", land: "76dvh", drift: "-10px", spinFrom: "26deg", spinTo: "-6deg", delay: "0.70s", fall: "1.6s" },
+  { id: 5, x: 94, y: 935, r: 40, size: 30, left: "26%", land: "80dvh", drift: "-8px", spinFrom: "-16deg", spinTo: "8deg", delay: "0.94s", fall: "1.55s" },
+  { id: 6, x: 592, y: 947, r: 35, size: 27, left: "54%", land: "86dvh", drift: "12px", spinFrom: "10deg", spinTo: "-18deg", delay: "1.18s", fall: "1.45s" },
 ]
+
+/* 사진을 size에 맞게 줄인 뒤, 원하는 체리가 원 안에 들어오도록 밀어 줍니다.
+   원형으로 잘라 내는 일은 CSS의 border-radius가 맡습니다. */
+function cropStyle(crop: CherryCrop): CSSProperties {
+  const scale = crop.size / (crop.r * 2)
+
+  return {
+    left: crop.left,
+    width: `${String(crop.size)}px`,
+    height: `${String(crop.size)}px`,
+    backgroundImage: `url(${splashPhoto})`,
+    backgroundSize: `${String(PHOTO_WIDTH * scale)}px ${String(PHOTO_HEIGHT * scale)}px`,
+    backgroundPosition: `${String(-(crop.x - crop.r) * scale)}px ${String(-(crop.y - crop.r) * scale)}px`,
+    "--land": crop.land,
+    "--drift": crop.drift,
+    "--spin_from": crop.spinFrom,
+    "--spin_to": crop.spinTo,
+    "--delay": crop.delay,
+    "--fall": crop.fall,
+  } as CSSProperties
+}
 
 interface SplashPageProps {
   readonly onNext: () => void
@@ -61,23 +89,8 @@ export function SplashPage({ onNext }: SplashPageProps) {
 
       {/* 떨어지는 체리는 장식이므로 화면 읽기 프로그램에는 알리지 않습니다. */}
       <div className={styles.cherry_layer} aria-hidden="true">
-        {FALLING_CHERRIES.map((item) => (
-          <img
-            className={styles.cherry}
-            key={item.id}
-            src={cherry}
-            alt=""
-            style={{
-              left: item.left,
-              "--size": item.size,
-              "--land": item.land,
-              "--drift": item.drift,
-              "--spin_from": item.spinFrom,
-              "--spin_to": item.spinTo,
-              "--delay": item.delay,
-              "--fall": item.fall,
-            } as CSSProperties}
-          />
+        {CHERRY_CROPS.map((crop) => (
+          <span className={styles.cherry} key={crop.id} style={cropStyle(crop)} />
         ))}
       </div>
 

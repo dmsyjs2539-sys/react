@@ -42,13 +42,16 @@
   pointer-events: none;
 }
 
-/* 체리 한 알. 낙하 거리와 회전, 시작 시각은 각 체리마다 다르게 넣어 줍니다. */
+
+/* 체리 한 알. 크기와 배경 위치는 사진에서 오려낼 좌표에 따라 달라지므로
+   TSX에서 계산해 넣고, 여기서는 원형으로 자르고 떨어뜨리는 일만 맡습니다. */
 .cherry {
   position: absolute;
   top: 0;
-  width: var(--size);
+  border-radius: 50%;
+  background-repeat: no-repeat;
   animation: cherry_drop var(--fall) cubic-bezier(0.45, 0.1, 0.6, 1) var(--delay) both;
-  filter: drop-shadow(0 6px 10px rgba(78, 33, 24, 0.45));
+  filter: drop-shadow(0 7px 11px rgba(78, 33, 24, 0.42));
   will-change: transform;
 }
 
