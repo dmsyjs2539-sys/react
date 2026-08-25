@@ -1,0 +1,87 @@
+/* 모든 페이지가 공유하는 휴대폰 화면 액자입니다. */
+.screen_frame {
+  position: relative;
+  display: flex;
+  width: 100%;
+  height: 100dvh;
+  flex-direction: column;
+  overflow: hidden;
+  color: var(--color_black);
+  background: var(--color_primary_100);
+  isolation: isolate;
+}
+
+/* 배경 그림은 글과 버튼보다 뒤에 깔고, 마우스 클릭을 가로채지 않게 합니다. */
+.background_image,
+.background_image_blurred {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  pointer-events: none;
+}
+
+/* 로그인 배경은 원본 디자인처럼 조금 크게 만든 뒤 흐리게 보여 줍니다. */
+.background_image_blurred {
+  left: 50%;
+  width: 492px;
+  max-width: none;
+  opacity: 0.8;
+  filter: blur(19.4px);
+  transform: translateX(-50%);
+}
+
+/* 스플래시 영상도 배경 그림과 같은 가장 뒤쪽 층에 놓습니다. */
+.background_video {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  pointer-events: none;
+}
+
+/* ambient_glow는 화면에 은은한 주황빛을 더하는 둥근 장식입니다. */
+.ambient_glow {
+  position: absolute;
+  z-index: -1;
+  width: 489px;
+  height: 489px;
+  border-radius: 999px;
+  background: rgba(255, 181, 158, 0.2);
+  filter: blur(50px);
+  pointer-events: none;
+}
+
+/* 화면마다 Figma에서 정한 빛의 위치가 달라 data-screen 이름으로 나눕니다. */
+.screen_frame[data-screen="onboarding_01"] .ambient_glow,
+.screen_frame[data-screen="onboarding_03"] .ambient_glow {
+  top: -94px;
+  left: 112px;
+}
+
+.screen_frame[data-screen="onboarding_02"] .ambient_glow {
+  top: -296px;
+  left: 117px;
+}
+
+.screen_frame[data-screen="onboarding_04"] .ambient_glow {
+  top: 294px;
+  left: -176px;
+  width: 380px;
+  height: 380px;
+}
+
+.screen_frame[data-screen="login"] .ambient_glow {
+  top: -214px;
+  left: 144px;
+  background: rgba(255, 210, 147, 0.2);
+}
+
+/* 스플래시 영상에는 이미 빛이 들어 있으므로 추가 장식을 숨깁니다. */
+.screen_frame[data-screen="splash"] .ambient_glow {
+  display: none;
+}
