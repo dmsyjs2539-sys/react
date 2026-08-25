@@ -1,6 +1,8 @@
 import type { OnboardingPageProps } from "./page_types.ts"
 import styles from "./OnboardingPages.module.css";
 
+import background from "../assets/onboarding/onboarding_02_background.png"
+
 import homeIndicator from "../assets/shared/ios_home_indicator.svg"
 import statusLevels from "../assets/shared/ios_status_levels.svg"
 import { BottomWrap } from "../components/BottomWrap"
@@ -11,7 +13,7 @@ import { OnboardingActions } from "../components/OnboardingActions.tsx";
 
 export function Onboarding02Page({ onNext, onSkip }: OnboardingPageProps) {
   return (
-    <ScreenFrame label="온보딩 02" glowVariant="onboarding_02">
+    <ScreenFrame label="온보딩 02" backgroundSrc={background} glowVariant="onboarding_02">
       <TopWrap levelsSrc={statusLevels} />
       {/* 앱의 main은 App이 맡으므로 이 페이지의 내용은 일반 div에 담습니다. */}
       <div className={styles.main_area}>

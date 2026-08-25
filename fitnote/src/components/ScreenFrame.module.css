@@ -86,7 +86,10 @@
   display: none;
 }
 
-/* 온보딩 02는 사진 대신 붉은 갈색 벽돌빛 그라디언트를 배경으로 씁니다. */
+/* 온보딩 02는 체리 사진 위에 벽돌빛 그라디언트를 덮습니다.
+   사진 자체가 흰 배경이라 밝은 글자가 사라지므로, 글이 놓인 위쪽은
+   진하게 덮고 아래로 갈수록 옅어져 향수병이 비쳐 보이게 합니다.
+   아래 background는 사진을 못 불러왔을 때를 위한 바탕색입니다. */
 .screen_frame[data-screen="onboarding_02"] {
   color: var(--color_brick_on);
   background: linear-gradient(
@@ -95,6 +98,21 @@
     var(--color_brick_500) 45%,
     var(--color_brick_700) 100%
   );
+}
+
+.screen_frame[data-screen="onboarding_02"]::before {
+  position: absolute;
+  z-index: -1;
+  content: "";
+  inset: 0;
+  background: linear-gradient(
+    165deg,
+    rgba(164, 85, 63, 0.95) 0%,
+    rgba(138, 63, 44, 0.9) 35%,
+    rgba(105, 45, 32, 0.66) 70%,
+    rgba(78, 33, 24, 0.5) 100%
+  );
+  pointer-events: none;
 }
 
 /* 어두운 벽돌 배경 위에서는 은은한 빛도 밝은 쪽으로 바꿔 줍니다. */
