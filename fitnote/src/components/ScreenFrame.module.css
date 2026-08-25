@@ -101,3 +101,35 @@
 .screen_frame[data-screen="onboarding_02"] .ambient_glow {
   background: rgba(255, 214, 190, 0.18);
 }
+
+/* 사진 배경이 어둡고 복잡한 화면은 글이 놓인 위쪽에만 옅은 막을 깔아
+   글자와 사진이 겹쳐도 읽히게 합니다. 글이 끝나는 지점부터 빠르게
+   투명해지므로 사진의 주인공은 그대로 드러납니다. */
+.screen_frame[data-screen="onboarding_01"]::before,
+.screen_frame[data-screen="onboarding_04"]::before {
+  position: absolute;
+  z-index: -1;
+  content: "";
+  inset: 0;
+  pointer-events: none;
+}
+
+.screen_frame[data-screen="onboarding_01"]::before {
+  background: linear-gradient(
+    180deg,
+    rgba(246, 236, 228, 0.95) 0%,
+    rgba(246, 236, 228, 0.9) 30%,
+    rgba(246, 236, 228, 0.62) 42%,
+    rgba(246, 236, 228, 0) 60%
+  );
+}
+
+.screen_frame[data-screen="onboarding_04"]::before {
+  background: linear-gradient(
+    180deg,
+    rgba(246, 236, 228, 0.9) 0%,
+    rgba(246, 236, 228, 0.82) 28%,
+    rgba(246, 236, 228, 0.5) 40%,
+    rgba(246, 236, 228, 0) 58%
+  );
+}
