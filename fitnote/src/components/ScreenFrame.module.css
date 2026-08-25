@@ -151,3 +151,18 @@
     rgba(246, 236, 228, 0) 58%
   );
 }
+
+/* 스플래시가 크림색 막으로 덮인 뒤 바뀌는 화면이므로, 같은 색에서
+   서서히 드러나게 해 두 화면이 끊기지 않고 이어지도록 합니다. */
+@keyframes screen_fade_in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.screen_frame[data-screen="onboarding_01"] {
+  animation: screen_fade_in 460ms ease-out both;
+}

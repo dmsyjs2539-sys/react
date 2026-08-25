@@ -36,3 +36,19 @@
   letter-spacing: 0.2px;
   line-height: 1.4;
 }
+
+/* 다음 화면으로 넘어가기 직전 화면을 덮는 막입니다.
+   평소에는 완전히 투명하고 클릭도 통과시킵니다. */
+.fade_curtain {
+  position: absolute;
+  z-index: 5;
+  inset: 0;
+  opacity: 0;
+  background: var(--color_primary_100);
+  pointer-events: none;
+}
+
+.fade_curtain[data-leaving="true"] {
+  opacity: 1;
+  transition: opacity 520ms ease-out;
+}
