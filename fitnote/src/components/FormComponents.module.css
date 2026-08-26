@@ -1,0 +1,102 @@
+/* 로그인 제목 줄과 입력칸을 위아래로 묶습니다. */
+.login_field {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  gap: 8px;
+}
+
+/* 왼쪽 label과 오른쪽 도움말을 한 줄 양끝에 놓습니다. */
+.login_field_row {
+  display: flex;
+  min-height: 20px;
+  align-items: flex-end;
+  justify-content: space-between;
+  font-family: var(--font_body);
+}
+
+.login_field_row label {
+  color: var(--color_brown);
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+}
+
+.field_note,
+.field_note_button {
+  color: var(--color_primary_700);
+  font-family: var(--font_body);
+  font-size: 12px;
+  font-weight: 400;
+  letter-spacing: 0.6px;
+  line-height: 16px;
+}
+
+.field_note_button {
+  border: 0;
+  padding: 0;
+  background: transparent;
+  cursor: pointer;
+}
+
+.field_note_button:focus-visible {
+  outline: var(--focus_outline);
+  outline-offset: 3px;
+}
+
+/* 기본 input 테두리를 지우고 Figma의 반투명 입력칸 모양을 만듭니다. */
+.login_field input {
+  width: 100%;
+  height: 48px;
+  border: 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.86);
+  border-radius: 8px 8px 0 0;
+  padding: 0 16px;
+  color: var(--color_black);
+  background: rgba(255, 255, 255, 0.22);
+  font-family: var(--font_input);
+  font-size: 16px;
+  font-weight: 300;
+  line-height: normal;
+}
+
+.login_field input::placeholder {
+  color: #b7b7b7;
+}
+
+/* 세 소셜 로그인 버튼이 함께 쓰는 흰색 기본 모양입니다. */
+.social_login_button {
+  display: inline-flex;
+  width: 100%;
+  height: 44px;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  border: 1px solid var(--color_primary_200);
+  border-radius: 12px;
+  padding: 0 16px;
+  color: var(--color_black);
+  background: var(--color_primary_0);
+  font-family: var(--font_body);
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+  cursor: pointer;
+}
+
+.social_login_button img {
+  width: 24px;
+  height: 24px;
+}
+
+/* provider 이름표에 따라 카카오와 애플 버튼 색만 바꿉니다. */
+.social_login_button[data-provider="kakao"] {
+  border-color: transparent;
+  background: #ffdc00;
+}
+
+.social_login_button[data-provider="apple"] {
+  border-color: transparent;
+  color: var(--color_primary_0);
+  background: var(--color_black);
+}

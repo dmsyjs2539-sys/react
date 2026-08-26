@@ -1,0 +1,104 @@
+/* 로그인 화면에서 상태바 아래의 남은 공간을 본문이 채웁니다. */
+.main_area {
+  position: relative;
+  width: 100%;
+  min-height: 0;
+  flex: 1 1 auto;
+  overflow: hidden;
+}
+
+/* Join 버튼은 본문 오른쪽 위에 떠 있도록 놓습니다. */
+.join_button {
+  position: absolute;
+  top: 6px;
+  right: 32px;
+  min-height: 28px;
+  border: 0;
+  border-bottom: 1px solid var(--color_primary_700);
+  padding: 4px 0;
+  color: var(--color_primary_700);
+  background: transparent;
+  font-family: var(--font_action);
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+/* FitNote 로고를 화면 가운데에 맞춥니다. */
+.login_title {
+  position: absolute;
+  top: 71px;
+  left: 50%;
+  margin: 0;
+  transform: translateX(-50%);
+}
+
+/* 입력 폼, 구분선, 소셜 버튼을 한 덩어리로 묶어 가운데 놓습니다. */
+.login_overlay {
+  position: absolute;
+  top: 165px;
+  left: 50%;
+  display: flex;
+  width: min(354px, calc(100% - 48px));
+  flex-direction: column;
+  gap: 36px;
+  padding: 0 8px;
+  transform: translateX(-50%);
+}
+
+.login_form {
+  display: grid;
+  gap: 24px;
+}
+
+.form_error {
+  margin: 0;
+  color: var(--color_primary_700);
+  font-family: var(--font_body);
+  font-size: 13px;
+  line-height: 18px;
+}
+
+/* '또는 소셜 로그인' 글자 양옆에 선을 그어 내용을 나눕니다. */
+.social_divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color_brown);
+  font-family: var(--font_body);
+  font-size: 12px;
+  font-weight: 400;
+  letter-spacing: 0.6px;
+  line-height: 16px;
+}
+
+/* ::before와 ::after는 HTML을 더 만들지 않고 양옆 선을 추가합니다. */
+.social_divider::before,
+.social_divider::after {
+  flex: 1 1 auto;
+  border-top: 1px solid var(--color_brown);
+  content: "";
+}
+
+.social_divider::before {
+  margin-right: 16px;
+}
+
+.social_divider::after {
+  margin-left: 16px;
+}
+
+/* 소셜 버튼 세 개를 같은 간격으로 쌓습니다. */
+.social_list {
+  display: grid;
+  gap: 18px;
+}
+
+/* 아주 좁은 화면에서는 로그인 묶음의 좌우 여백을 줄입니다. */
+@media (max-width: 374px) {
+  .login_overlay {
+    width: calc(100% - 32px);
+  }
+}

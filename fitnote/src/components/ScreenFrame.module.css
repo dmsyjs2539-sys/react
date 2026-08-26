@@ -28,7 +28,7 @@
   left: 50%;
   width: 492px;
   max-width: none;
-  opacity: 0.8;
+  opacity: 0.5;
   filter: blur(19.4px);
   transform: translateX(-50%);
 }
